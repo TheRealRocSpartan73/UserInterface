@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public bool isGameActive;
+    public Button restartButton;
 
     private float spawnRate = 1.0f;
     private int score = 0;
@@ -51,14 +53,17 @@ public class GameManager : MonoBehaviour
     }
 
     //GAME OVER MAN
-    public void Gameover()  //Display Game over text and stop creating objects.
+    public void Gameover()  //Display Game over text and stop creating objects. Give option to restart
     {
+        
+        isGameActive = false;
+        restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
-        isGameActive = false; 
     }
 
-    public void RestartGame()
+    public void RestartGame() //Once Restart Button has been clicked, reload the scene.
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
