@@ -15,6 +15,9 @@ public class Target : MonoBehaviour
     private float zSpawnPos = 0;
     private GameManager gameManager;  //Ref to Game Manager
 
+
+    public int pointValue; //Unique score value for each object
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +52,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(this.gameObject); //Wipe it out if clicked on
-        gameManager.UpdateScore(5); //Update the Score when object clicked on and destroyed
+        gameManager.UpdateScore(pointValue); //Update the Score when object clicked on and destroyed
     }
 
 
