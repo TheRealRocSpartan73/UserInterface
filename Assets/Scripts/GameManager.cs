@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     public GameObject titleScreen;
 
-    private float spawnRate = 1.0f;
+    private float spawnRate = 1.5f;
     private int score = 0;
 
     // Start is called before the first frame update
@@ -65,10 +65,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
         //Start the function to randomly spawn assets
         isGameActive = true; //Game is active at START... DOH
+        spawnRate /= difficulty;  //Divide spawn rate by button difficulty so 1 second, 0.5 seconds or 0.3ish seconds for each spawn.
         UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
         StartCoroutine(SpawnTarget());
 
