@@ -20,10 +20,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Start the function to randomly spawn assets
-        isGameActive = true; //Game is active at START... DOH
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
+       
         
 
     }
@@ -65,6 +62,15 @@ public class GameManager : MonoBehaviour
     {
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        //Start the function to randomly spawn assets
+        isGameActive = true; //Game is active at START... DOH
+        UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
+        StartCoroutine(SpawnTarget());
+        
     }
 
 }
