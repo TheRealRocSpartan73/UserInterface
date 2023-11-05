@@ -13,11 +13,13 @@ public class Target : MonoBehaviour
     private float xRange = 4;
     private float ySpawnPos = -2;
     private float zSpawnPos = 0;
+    private GameManager gameManager;  //Ref to Game Manager
 
     // Start is called before the first frame update
     void Start()
     {
         targetRb= GetComponent<Rigidbody>();  //grab this objects RigidBody component.
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //Grab a Reference to the GameManager Object, then grab the script component.
         
         //Move object up based on random range. Use Impulse for instant Force Power
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
@@ -47,6 +49,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(this.gameObject); //Wipe it out if clicked on
+        gameManager.UpdateScore(5); //Update the Score when object clicked on and destroyed
     }
 
 

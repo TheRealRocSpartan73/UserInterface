@@ -34,12 +34,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(spawnRate); //Wait then spawn
             int index = Random.Range(0, targets.Count); //Select Random object from list
             Instantiate(targets[index]); //Finally create the object  -object will bounce based on the logic within Target.cs
-            UpdateScore(5);//test
         }
 
     }
 
-    void UpdateScore(int scoreToAdd)
+    public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
