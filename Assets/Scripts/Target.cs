@@ -46,8 +46,12 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
-    }
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.Gameover();
+        }
 
+    }
 
     //If Object gets clicked on then remove it
     private void OnMouseDown()

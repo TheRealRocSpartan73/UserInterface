@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         //Start the function to randomly spawn assets
         StartCoroutine(SpawnTarget());
         UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
-        gameOverText.gameObject.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    //GAME OVER MAN
+    public void Gameover()
+    {
+        gameOverText.gameObject.SetActive(true);
     }
 
 }
