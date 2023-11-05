@@ -17,6 +17,7 @@ public class Target : MonoBehaviour
 
 
     public int pointValue; //Unique score value for each object
+    public ParticleSystem explosionParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class Target : MonoBehaviour
     {
         Destroy(this.gameObject); //Wipe it out if clicked on
         gameManager.UpdateScore(pointValue); //Update the Score when object clicked on and destroyed
+        Instantiate(explosionParticle, this.transform.position, this.transform.rotation);
     }
 
 
