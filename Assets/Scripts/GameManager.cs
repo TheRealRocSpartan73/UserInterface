@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public bool isGameActive;
     public Button restartButton;
+    public GameObject titleScreen;
 
     private float spawnRate = 1.0f;
     private int score = 0;
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
         isGameActive = true; //Game is active at START... DOH
         UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
         StartCoroutine(SpawnTarget());
+
+        titleScreen.gameObject.SetActive(false); //Game has started remove title screen
         
     }
 
