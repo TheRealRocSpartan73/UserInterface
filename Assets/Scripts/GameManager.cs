@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public bool isGameActive;
 
     private float spawnRate = 1.0f;
     private int score = 0;
@@ -17,8 +18,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Start the function to randomly spawn assets
+        isGameActive = true; //Game is active at START... DOH
         StartCoroutine(SpawnTarget());
         UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
+        
 
     }
 
@@ -31,7 +34,7 @@ public class GameManager : MonoBehaviour
     //Spawns random objects
     IEnumerator SpawnTarget()
     {
-        while (true)
+        while (isGameActive == true)
         {
             yield return new WaitForSeconds(spawnRate); //Wait then spawn
             int index = Random.Range(0, targets.Count); //Select Random object from list
@@ -47,9 +50,10 @@ public class GameManager : MonoBehaviour
     }
 
     //GAME OVER MAN
-    public void Gameover()
+    public void Gameover()  //Display Game over text and stop creating objects.
     {
         gameOverText.gameObject.SetActive(true);
+        isGameActive = false; 
     }
 
 }

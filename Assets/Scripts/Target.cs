@@ -46,7 +46,7 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
-        if (!gameObject.CompareTag("Bad"))
+        if (!gameObject.CompareTag("Bad")) //If player lets a "Good" object drop -- GAME OVER
         {
             gameManager.Gameover();
         }
@@ -56,9 +56,13 @@ public class Target : MonoBehaviour
     //If Object gets clicked on then remove it
     private void OnMouseDown()
     {
-        Destroy(this.gameObject); //Wipe it out if clicked on
-        gameManager.UpdateScore(pointValue); //Update the Score when object clicked on and destroyed
-        Instantiate(explosionParticle, this.transform.position, this.transform.rotation);
+        if(gameManager.isGameActive == true) //
+        {
+            Destroy(this.gameObject); //Wipe it out if clicked on
+            gameManager.UpdateScore(pointValue); //Update the Score when object clicked on and destroyed
+            Instantiate(explosionParticle, this.transform.position, this.transform.rotation);
+        }
+      
     }
 
 
