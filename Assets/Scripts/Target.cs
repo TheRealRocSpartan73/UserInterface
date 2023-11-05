@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -10,7 +11,7 @@ public class Target : MonoBehaviour
     private float maxSpeed = 16;
     private float maxTorque = 10;
     private float xRange = 4;
-    private float ySpawnPos = -6;
+    private float ySpawnPos = -2;
     private float zSpawnPos = 0;
 
     // Start is called before the first frame update
@@ -34,6 +35,20 @@ public class Target : MonoBehaviour
     {
         
     }
+
+    //If object hits sensor then get rid of it -- no longer required
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
+    }
+
+
+    //If Object gets clicked on then remove it
+    private void OnMouseDown()
+    {
+        Destroy(this.gameObject); //Wipe it out if clicked on
+    }
+
 
     Vector3 RandomForce()
     {
