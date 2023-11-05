@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
 
     private float spawnRate = 1.0f;
     private int score = 0;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
         //Start the function to randomly spawn assets
         StartCoroutine(SpawnTarget());
         UpdateScore(0); //Just to be sure -- even though variable is instantiated at 0;
+        gameOverText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
